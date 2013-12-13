@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFilesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFilesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{filesController.selected.id}" title="#{bundle.EditFilesTitle_id}" required="true" requiredMessage="#{bundle.EditFilesRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditFilesLabel_path}" for="path" />
+                    <h:inputText id="path" value="#{filesController.selected.path}" title="#{bundle.EditFilesTitle_path}" />
+                    <h:outputLabel value="#{bundle.EditFilesLabel_filename}" for="filename" />
+                    <h:inputText id="filename" value="#{filesController.selected.filename}" title="#{bundle.EditFilesTitle_filename}" />
+                    <h:outputLabel value="#{bundle.EditFilesLabel_serverno}" for="serverno" />
+                    <h:inputText id="serverno" value="#{filesController.selected.serverno}" title="#{bundle.EditFilesTitle_serverno}" required="true" requiredMessage="#{bundle.EditFilesRequiredMessage_serverno}"/>
+                    <h:outputLabel value="#{bundle.EditFilesLabel_userId}" for="userId" />
+                    <h:selectOneMenu id="userId" value="#{filesController.selected.userId}" title="#{bundle.EditFilesTitle_userId}" required="true" requiredMessage="#{bundle.EditFilesRequiredMessage_userId}">
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{filesController.update}" value="#{bundle.EditFilesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFilesViewLink}"/>
+                <br />
+                <h:commandLink action="#{filesController.prepareList}" value="#{bundle.EditFilesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFilesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

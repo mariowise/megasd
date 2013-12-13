@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" pico="plop"/>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet name="css/bootstrap.css"/>
+        <h:outputStylesheet name="css/bootstrap-theme.css"/>
+        <h:outputScript name="js/jquery.js"/>
+        <h:outputScript name="js/bootstrap.js"/>
+    </h:head>
+    <h:body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">Header</div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-title">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <ui:insert name="title">Default Title</ui:insert>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <ui:insert name="body">Default Body</ui:insert>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">Footer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

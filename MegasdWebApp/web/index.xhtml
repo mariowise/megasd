@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Operaciones"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            Hello from Facelets
+            <br />
+            <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+            <br />
+            <h:link outcome="/files/List" value="Show All Files Items"/>
+            <br />
+            <h:link outcome="/users/List" value="Show All Users Items"/>
+            <br />
+            <h:link outcome="/usersTypes/List" value="Show All UsersTypes Items"/>
+            <br />
+            <h:link outcome="/files/List" value="Show All Files Items"/>
+            <br />
+            <h:link outcome="/users/List" value="Show All Users Items"/>
+            <br />
+            <h:link outcome="/usersTypes/List" value="Show All UsersTypes Items"/>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+
