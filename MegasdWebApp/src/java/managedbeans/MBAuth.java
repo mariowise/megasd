@@ -30,8 +30,8 @@ public class MBAuth implements Serializable {
 
 //    @EJB
 //    private AuditoriaLocal auditoria;
-    @EJB
-    private UsersController userController;
+//    @EJB
+//    private UsersController userController;
     private String username;
        
 

@@ -43,22 +43,22 @@ public class LoginController {
 
     }
     
-    @PostConstruct
-    public void init() {
-        if (mbAuth.isLogued()) {
-
-            FacesContext context = FacesContext.getCurrentInstance();
-            ExternalContext externalContext = context.getExternalContext();
-            HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
-
-//            if (request.isUserInRole("JefePlanta")) {
-//                ag.goToPage("/faces/jefePlanta/inicio.xhtml");
-//            }
-//            if (request.isUserInRole("Basculista")) {
-//                ag.goToPage("/faces/basculista/registros.xhtml");
-//            }
-        }
-    }
+//    @PostConstruct
+//    public void init() {
+//        if (mbAuth.isLogued()) {
+//
+//            FacesContext context = FacesContext.getCurrentInstance();
+//            ExternalContext externalContext = context.getExternalContext();
+//            HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+//
+////            if (request.isUserInRole("JefePlanta")) {
+////                ag.goToPage("/faces/jefePlanta/inicio.xhtml");
+////            }
+////            if (request.isUserInRole("Basculista")) {
+////                ag.goToPage("/faces/basculista/registros.xhtml");
+////            }
+//        }
+//    }
 
     public void login() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -66,13 +66,15 @@ public class LoginController {
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
         if (mbAuth.login(username, password)) {
-
+            System.out.println("Usuaro logeado de forma exitosa: " + username);
 //            if (request.isUserInRole("JefePlanta")) {
 //                ag.goToPage("/faces/jefePlanta/inicio.xhtml");
 //            }
 //            if (request.isUserInRole("Basculista")) {
 //                ag.goToPage("/faces/basculista/registros.xhtml");
 //            }
-        } 
+        } else {
+            System.out.println("Un culiao se esta tratando de colar a la wea!!");
+        }
     }
 }
