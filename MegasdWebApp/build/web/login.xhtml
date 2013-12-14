@@ -14,15 +14,15 @@
                 <table columns="2" role="presentation"> 
                     <tr>
                         <td><h:outputLabel for="username" value="Username"/></td>
-                        <td><h:inputText id="username" autocomplete="off" size="20" value="#{loginBean.username}" /></td>
+                        <td><h:inputText id="username" autocomplete="off" size="20" value="#{loginController.username}" /></td>
                     </tr>
                     <tr>
                         <td><h:outputLabel for="password" value="Password"/></td>
-                        <td><h:inputSecret id="password" autocomplete="off" size="20" value="#{loginBean.password}"/></td>
+                        <td><h:inputSecret id="password" autocomplete="off" size="20" value="#{loginController.password}"/></td>
                     </tr>
                 </table>
                 <p>
-                    <h:commandButton type="submit" value="Login" action="#{loginBean.login()}"/>
+                    <h:commandButton type="submit" value="Login" action="#{loginController.login()}"/>
                     <h:commandButton type="reset" value="Reset"/>
                 </p>
             </h:form>
