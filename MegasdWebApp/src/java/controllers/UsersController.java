@@ -8,6 +8,7 @@ import sessionbeans.UsersFacadeLocal;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
@@ -19,7 +20,7 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 @Named("usersController")
-@SessionScoped
+@RequestScoped
 public class UsersController implements Serializable {
 
     private Users current;
@@ -28,7 +29,7 @@ public class UsersController implements Serializable {
     private UsersFacadeLocal ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
+    
     public UsersController() {
     }
 

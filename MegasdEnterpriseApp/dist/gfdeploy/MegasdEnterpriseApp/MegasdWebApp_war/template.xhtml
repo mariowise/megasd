@@ -8,22 +8,27 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet name="css/bootstrap.css"/>
         <h:outputStylesheet name="css/bootstrap-theme.css"/>
+        <h:outputStylesheet name="css/font-awesome.css"/>
+        <h:outputStylesheet name="css/style.css"/>
         <h:outputScript name="js/jquery.js"/>
         <h:outputScript name="js/bootstrap.js"/>
     </h:head>
     <h:body>
-        <div class="wrapper">
+        <div id="wrapper">
             <div class="header">
                 <div class="container">
                     <div class="row">
-                        <div class="span12">Header</div>
+                        <div class="col-xs-6 col-xs-offset-6" style="text-align: right; padding-top: 30px;">
+                            <a class="btn btn-default"><i class="fa-cloud-upload"></i> Upload file</a>
+                            <a class="btn btn-danger"><i class="fa-level-up"></i> Login</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="main-title">
                 <div class="container">
                     <div class="row">
-                        <div class="span12">
+                        <div class="span12" style="text-align: ">
                             <ui:insert name="title">Default Title</ui:insert>
                         </div>
                     </div>
@@ -38,10 +43,11 @@
                     </div>
                 </div>
             </div>
+            <div class="wrapper-ghost"></div>
             <div class="footer">
                 <div class="container">
                     <div class="row">
-                        <div class="span12">Footer</div>
+                        <div class="span12" style="text-align: center;">Sistemas Distribuidos, 02-2013.</div>
                     </div>
                 </div>
             </div>

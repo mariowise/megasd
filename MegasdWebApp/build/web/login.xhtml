@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Bienvenido"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form class="prueba">
+                <table columns="2" role="presentation"> 
+                    <tr>
+                        <td><h:outputLabel for="username" value="Username"/></td>
+                        <td><h:inputText id="username" autocomplete="off" size="20" value="#{loginBean.username}" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel for="password" value="Password"/></td>
+                        <td><h:inputSecret id="password" autocomplete="off" size="20" value="#{loginBean.password}"/></td>
+                    </tr>
+                </table>
+                <p>
+                    <h:commandButton type="submit" value="Login" action="#{loginBean.login()}"/>
+                    <h:commandButton type="reset" value="Reset"/>
+                </p>
+            </h:form>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

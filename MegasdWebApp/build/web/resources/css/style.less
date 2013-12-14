@@ -1,0 +1,53 @@
+
+@gris: #EEECEC;
+@borde-gris: #999999;
+@rojo: #550A0A;
+@title-rojo: #A84C4C;
+
+html, body {
+    height: 100%;
+}
+
+@footerHeight: 50px;
+#wrapper {
+    min-height: 100%;
+    position: relative;
+    
+    & > .header {
+        background-color: @rojo;
+        height: 100px;
+    }
+    & > .main-title {
+        background-color: @gris;
+        border-bottom: 1px solid @rojo;
+        line-height: 50px;
+        color: @title-rojo;
+        font-weight: bolder;
+        font-size: 20px;
+    }
+    & > .main-body {
+        padding-top: 15px;
+    }
+    & > .wrapper-ghost {
+        height: calc(@footerHeight + 20px);
+    }
+    & > .footer {
+        // Footer abajo
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: @footerHeight;
+        
+        // Estilos propios
+        background-color: @gris;
+        border-top: 1px solid @rojo;
+        color: #999;
+        padding-top: 10px;
+    }
+}
+
+i {
+    font-family: FontAwesome;
+    font-style: normal;
+}
+

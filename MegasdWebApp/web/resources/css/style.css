@@ -1,0 +1,40 @@
+html,
+body {
+  height: 100%;
+}
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+#wrapper > .header {
+  background-color: #550a0a;
+  height: 100px;
+}
+#wrapper > .main-title {
+  background-color: #eeecec;
+  border-bottom: 1px solid #550a0a;
+  line-height: 50px;
+  color: #a84c4c;
+  font-weight: bolder;
+  font-size: 20px;
+}
+#wrapper > .main-body {
+  padding-top: 15px;
+}
+#wrapper > .wrapper-ghost {
+  height: calc(70px);
+}
+#wrapper > .footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #eeecec;
+  border-top: 1px solid #550a0a;
+  color: #999;
+  padding-top: 10px;
+}
+i {
+  font-family: FontAwesome;
+  font-style: normal;
+}
