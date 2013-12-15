@@ -8,7 +8,7 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet name="css/bootstrap.css"/>
         <h:outputStylesheet name="css/bootstrap-theme.css"/>
-        
+        <h:outputStylesheet name="css/font-awesome.css"/>
         <h:outputStylesheet name="css/style.css"/>
         <h:outputScript name="js/jquery.js"/>
         <h:outputScript name="js/bootstrap.js"/>
@@ -20,7 +20,13 @@
                     <div class="row">
                         <div class="col-xs-6 col-xs-offset-6" style="text-align: right; padding-top: 30px;">
                             <a class="btn btn-default"><i class="fa-cloud-upload"></i> Upload file</a>
-                            <a class="btn btn-danger"><i class="fa-level-up"></i> Login</a>
+                            <ui:fragment rendered="#{mbAuth.hasIdentity()}">
+                                <a class="btn btn-danger" href="#{request.contextPath}/faces/logout.xhtml"><i class="fa-sign-out"></i>Logout</a>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{!mbAuth.hasIdentity()}">
+                                <a class="btn btn-danger" href="#{request.contextPath}/faces/login.xhtml"><i class="fa-level-up"></i> Login</a>
+                            </ui:fragment>
+                            
                         </div>
                     </div>
                 </div>
