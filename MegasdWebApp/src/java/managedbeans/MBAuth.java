@@ -53,17 +53,10 @@ public class MBAuth implements Serializable {
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
         try {
-            if(!isLogued()) {
+            if(!hasIdentity()) {
                 request.login(_username, _password);
             }
-
-//            if (userController.analizarHabilitado(username) == true) {
-//                if(!isLogued()){
-//                    request.login(username, password);
-//                    registrarAccion("Inicio de sesión");
-//                }
-//                return true;
-//            } 
+            return true;
             
         } catch (Exception e) {
             System.out.println("Usuario o contraseña inválidos");
@@ -113,7 +106,7 @@ public class MBAuth implements Serializable {
 //        }
 //    }
 
-    public boolean isLogued(){
+    public boolean hasIdentity(){
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();

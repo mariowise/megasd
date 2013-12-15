@@ -1,5 +1,9 @@
 package controllers;
 
+import controllers.util.JsfUtil;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -40,41 +44,42 @@ public class LoginController {
 
 
     public LoginController() {
-
+        
     }
     
 //    @PostConstruct
 //    public void init() {
+//        System.out.println("\n\nIniciando LoginController");
 //        if (mbAuth.isLogued()) {
 //
 //            FacesContext context = FacesContext.getCurrentInstance();
 //            ExternalContext externalContext = context.getExternalContext();
 //            HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+//            System.out.println("El usuario ya esta logeado y esta intentando denuevo");
 //
-////            if (request.isUserInRole("JefePlanta")) {
-////                ag.goToPage("/faces/jefePlanta/inicio.xhtml");
-////            }
-////            if (request.isUserInRole("Basculista")) {
-////                ag.goToPage("/faces/basculista/registros.xhtml");
-////            }
+//        } else {
+//            System.out.println("El usuario no esta logeado");
 //        }
 //    }
 
     public void login() {
+        System.out.println("Iniciando método de login");
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
         if (mbAuth.login(username, password)) {
             System.out.println("Usuaro logeado de forma exitosa: " + username);
-//            if (request.isUserInRole("JefePlanta")) {
-//                ag.goToPage("/faces/jefePlanta/inicio.xhtml");
-//            }
-//            if (request.isUserInRole("Basculista")) {
-//                ag.goToPage("/faces/basculista/registros.xhtml");
-//            }
+            JsfUtil.redirect("/faces/users/List.xhtml");
         } else {
-            System.out.println("Un culiao se esta tratando de colar a la wea!!");
+            System.out.println("LOGIN FAIL!");
         }
+    }
+    
+    public void logout() {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.invalidateSession();
+        System.out.println("El usuario ha realizado LOGOUT!");
+        JsfUtil.redirect("/faces/login.xhtml");
     }
 }

@@ -1,11 +1,23 @@
 
 @gris: #EEECEC;
 @borde-gris: #999999;
-@rojo: #550A0A;
-@title-rojo: #A84C4C;
+@rojo: #017491;
+@title-rojo: #4C87A8;
+
+@import url(http://fonts.googleapis.com/css?family=Amaranth:400,400italic,700,700italic);
 
 html, body {
     height: 100%;
+}
+
+html {
+    background-image: url("../img/clouds.jpg");
+    background-position: fixed;
+}
+
+body {
+    background-color: rgba(255,255,255,0.7);
+    min-height: 100%;
 }
 
 @footerHeight: 50px;
@@ -51,3 +63,22 @@ i {
     font-style: normal;
 }
 
+.box {
+    background-color: rgba(255,255,255,0.8);
+    padding: 20px;
+    border: 1px solid #DDD;
+}
+
+#pageLogo {
+    font-size: 36px;
+    color: white;
+    line-height: 95px;
+    
+    & > * {
+        display: inline-block;
+    }
+    & > div {
+        margin-left: 10px;
+        font-family: 'Amaranth', sans-serif;
+    }
+}
