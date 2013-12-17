@@ -16,9 +16,6 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListFilesEmpty}" rendered="#{filesController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{filesController.items.rowCount > 0}">
-                    <h:outputText value="#{filesController.pagination.pageFirstItem + 1}..#{filesController.pagination.pageLastItem + 1}/#{filesController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{filesController.previous}" value="#{bundle.Previous} #{filesController.pagination.pageSize}" rendered="#{filesController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{filesController.next}" value="#{bundle.Next} #{filesController.pagination.pageSize}" rendered="#{filesController.pagination.hasNextPage}"/>&nbsp;
                     <div class="box">
                         <h:dataTable value="#{filesController.items}" var="item" class="table">
                             <h:column>
@@ -58,11 +55,6 @@
                         </h:dataTable>
                     </div>
                 </h:panelGroup>
-                <br />
-                <h:commandLink action="#{filesController.prepareCreate}" value="#{bundle.ListFilesCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListFilesIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
