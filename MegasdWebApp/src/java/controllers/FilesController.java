@@ -18,6 +18,8 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
+import managedbeans.MBAuth;
 
 @Named("filesController")
 @RequestScoped
@@ -29,6 +31,8 @@ public class FilesController implements Serializable {
     private FilesFacadeLocal ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    @Inject
+    private MBAuth mbAuth;
     
     public FilesController() {
     }
@@ -56,7 +60,8 @@ public class FilesController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    // return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findByUserId(mbAuth.getUserId()));
                 }
             };
         }

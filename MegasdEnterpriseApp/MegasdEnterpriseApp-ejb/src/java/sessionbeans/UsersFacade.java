@@ -40,6 +40,13 @@ public class UsersFacade extends AbstractFacade<Users> implements UsersFacadeLoc
         users = q.getResultList();
         return null;
     }
+
+    @Override
+    public Users findByUsername(String username) {
+        Query q = em.createNamedQuery("Users.findByUsername");
+        q.setParameter("username", username);
+        return (Users) q.getResultList().get(0);
+    }
     
     
     

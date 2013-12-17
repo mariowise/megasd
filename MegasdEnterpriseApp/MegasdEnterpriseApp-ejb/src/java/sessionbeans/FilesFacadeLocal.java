@@ -25,7 +25,7 @@ public interface FilesFacadeLocal {
 
     Files find(Object id);
     
-    Files findByUserId(int userid);
+    List<Files> findByUserId(int userid);
 
     List<Files> findAll();
 

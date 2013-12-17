@@ -4,21 +4,18 @@
  */
 package managedbeans;
 
-import controllers.UsersController;
+import entities.Users;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import sessionbeans.UsersFacadeLocal;
 
 /**
  *
@@ -32,11 +29,24 @@ public class MBAuth implements Serializable {
 //    private AuditoriaLocal auditoria;
 //    @EJB
 //    private UsersController userController;
+    @EJB
+    private UsersFacadeLocal usersFacade;
+    
+    private int userId;
+    
     private String username;
     
     private String flashMessage;
     
     private Boolean flash;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public Boolean getFlash() {
         return flash;
@@ -58,8 +68,6 @@ public class MBAuth implements Serializable {
         this.flashMessage = flashMessage;
     }
        
-
-    
     public String getRutRecuperar() {
         return username;
     }
@@ -80,6 +88,8 @@ public class MBAuth implements Serializable {
         try {
             if(!hasIdentity()) {
                 request.login(_username, _password);
+                userId = usersFacade.findByUsername(_username).getId();
+                System.out.println("SessionScope created for "+ userId +":"+ _username);
             }
             return true;
             

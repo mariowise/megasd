@@ -7,9 +7,12 @@
 package sessionbeans;
 
 import entities.Files;
+import entities.Users;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -30,8 +33,16 @@ public class FilesFacade extends AbstractFacade<Files> implements FilesFacadeLoc
     }
 
     @Override
-    public Files findByUserId(int userid) {
-        return null;
+    public List<Files> findByUserId(int userid) {
+        try {
+            Query q = em.createNamedQuery("Files.findByUserId");
+            q.setParameter("userId", new Users(userid));
+            return q.getResultList();
+        } catch (Exception e) {
+            System.out.println("Problemas en el findByuserId("+ userid +")");
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
 }
