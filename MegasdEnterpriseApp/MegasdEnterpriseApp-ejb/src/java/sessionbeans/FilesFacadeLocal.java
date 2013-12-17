@@ -24,6 +24,8 @@ public interface FilesFacadeLocal {
     void remove(Files files);
 
     Files find(Object id);
+    
+    Files findByUserId(int userid);
 
     List<Files> findAll();
 

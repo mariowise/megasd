@@ -6,7 +6,11 @@
 
 package entities;
 
+import com.sun.jersey.core.util.Base64;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -68,6 +72,12 @@ public class Users implements Serializable {
     public Users(Integer id) {
         this.id = id;
     }
+    
+    public Users(String username, String password, int type) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        this.username = username;
+        this.setPassword(password);
+        this.usertypeId = new UsersTypes(type);
+    }
 
     public Integer getId() {
         return id;
@@ -89,8 +99,18 @@ public class Users implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hash = md.digest(password.getBytes("UTF-8"));
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1) {
+                sb.append('0');
+            }
+            sb.append(hex);
+        }
+        this.password = sb.toString();
     }
 
     @XmlTransient

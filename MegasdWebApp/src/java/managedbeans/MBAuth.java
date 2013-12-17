@@ -33,8 +33,33 @@ public class MBAuth implements Serializable {
 //    @EJB
 //    private UsersController userController;
     private String username;
+    
+    private String flashMessage;
+    
+    private Boolean flash;
+
+    public Boolean getFlash() {
+        return flash;
+    }
+
+    public void setFlash(Boolean flash) {
+        this.flash = flash;
+    }
+
+    public String getFlashMessage() {
+        String response = flashMessage;
+        flashMessage = "";
+        flash = false;
+        return response;
+    }
+
+    public void setFlashMessage(String flashMessage) {
+        flash = true;
+        this.flashMessage = flashMessage;
+    }
        
 
+    
     public String getRutRecuperar() {
         return username;
     }
@@ -78,34 +103,6 @@ public class MBAuth implements Serializable {
         }
     }
 
-//    public void recuperarPassword() {
-//
-//        try {
-//            mensajeria.recuperarContraseña(username);
-//            username = null;
-//
-//            // mc.mensajeRetroalimentacion("Operación Exitosa", "Correo enviado");
-//        } catch (Exception e) {
-//            username = null;
-//            // mc.mensajeRetroalimentacion("Error", e.getMessage());
-//        }
-//
-//    }
-
-//    public void registrarAccion(String descripcion) {
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        ExternalContext externalContext = context.getExternalContext();
-//        HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
-//        String username = request.getRemoteUser();
-//        
-//        try {
-//            String name = userController.entregarNombre(username);
-//            // auditoria.registrarAccion(descripcion, name);
-//        } catch (Exception e) {
-//            // mc.mensajeRetroalimentacion("Error", e.getMessage());
-//        }
-//    }
-
     public boolean hasIdentity(){
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
@@ -116,4 +113,5 @@ public class MBAuth implements Serializable {
         }
         return true;
     }
+
 }

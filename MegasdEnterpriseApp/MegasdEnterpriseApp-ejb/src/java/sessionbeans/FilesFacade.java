@@ -28,5 +28,10 @@ public class FilesFacade extends AbstractFacade<Files> implements FilesFacadeLoc
     public FilesFacade() {
         super(Files.class);
     }
+
+    @Override
+    public Files findByUserId(int userid) {
+        return null;
+    }
     
 }

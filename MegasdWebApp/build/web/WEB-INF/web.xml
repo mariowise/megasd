@@ -47,4 +47,8 @@
         <description/>
         <role-name>Administrador</role-name>
     </security-role>
+    <mime-mapping>
+        <extension>woff</extension>
+        <mime-type>font/woff</mime-type>
+    </mime-mapping>
 </web-app>

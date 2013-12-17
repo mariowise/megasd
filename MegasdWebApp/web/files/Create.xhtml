@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateFilesLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{filesController.selected.id}" title="#{bundle.CreateFilesTitle_id}" required="true" requiredMessage="#{bundle.CreateFilesRequiredMessage_id}"/>
                     <h:outputLabel value="#{bundle.CreateFilesLabel_path}" for="path" />
                     <h:inputText id="path" value="#{filesController.selected.path}" title="#{bundle.CreateFilesTitle_path}" />
                     <h:outputLabel value="#{bundle.CreateFilesLabel_filename}" for="filename" />

@@ -6,8 +6,6 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" pico="plop"/>
         <title><ui:insert name="title">Default Title</ui:insert></title>
-        <h:outputStylesheet name="css/bootstrap.css"/>
-        <h:outputStylesheet name="css/bootstrap-theme.css"/>
         <h:outputStylesheet name="css/font-awesome.css"/>
         <h:outputStylesheet name="css/style.css"/>
         <h:outputScript name="js/jquery.js"/>
@@ -16,14 +14,23 @@
     <h:body>
         <div id="wrapper">
             <div class="header">
+                <div class="flash-message">
+                    <ui:fragment rendered="#{mbAuth.flash}">
+                        <div class="message">#{mbAuth.flashMessage}</div>
+                    </ui:fragment>
+                </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-6 col-xs-offset-6" style="text-align: right; padding-top: 30px;">
-                            <a class="btn btn-default"><i class="fa-cloud-upload"></i> Upload file</a>
+                        <div class="col-xs-6">
+                            <div id="pageLogo"><i class="fa-cloud-download"></i><div>MEGASD</div></div>
+                        </div>
+                        <div class="col-xs-6" style="text-align: right; padding-top: 30px;">
                             <ui:fragment rendered="#{mbAuth.hasIdentity()}">
+                                <a class="btn btn-default"><i class="fa-file-o"></i> Upload file</a>
                                 <a class="btn btn-danger" href="#{request.contextPath}/faces/logout.xhtml"><i class="fa-sign-out"></i>Logout</a>
                             </ui:fragment>
                             <ui:fragment rendered="#{!mbAuth.hasIdentity()}">
+                                <a class="btn btn-success" href="#{request.contextPath}/faces/register.xhtml"><i class="fa-user"></i> Register</a>
                                 <a class="btn btn-danger" href="#{request.contextPath}/faces/login.xhtml"><i class="fa-level-up"></i> Login</a>
                             </ui:fragment>
                             
@@ -34,7 +41,7 @@
             <div class="main-title">
                 <div class="container">
                     <div class="row">
-                        <div class="span12" style="text-align: ">
+                        <div class="span12" style="text-align: center">
                             <ui:insert name="title">Default Title</ui:insert>
                         </div>
                     </div>
@@ -58,5 +65,10 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            setTimeout(function() {
+                $('.flash-message > .message').slideUp(800);
+            }, 3000);
+        </script>
     </h:body>
 </html>

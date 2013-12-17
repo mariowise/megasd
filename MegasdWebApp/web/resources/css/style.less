@@ -4,6 +4,9 @@
 @rojo: #017491;
 @title-rojo: #4C87A8;
 
+/* Bootstrap */
+@import "bootstrap/bootstrap.less";
+
 @import url(http://fonts.googleapis.com/css?family=Amaranth:400,400italic,700,700italic);
 
 html, body {
@@ -80,5 +83,20 @@ i {
     & > div {
         margin-left: 10px;
         font-family: 'Amaranth', sans-serif;
+    }
+}
+
+.flash-message {
+    width: 100%;
+    
+    & > .message {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        background-color: rgb(248, 255, 161);
+        line-height: 26px;
+        color: rgb(172, 124, 0);
+        margin-left: auto;
+        margin-right: auto;
     }
 }

@@ -25,7 +25,7 @@ public class LoginController {
     private MBAuth mbAuth;
     private String username;
     private String password;
-    
+
     public String getUsername() {
         return username;
     }
@@ -70,8 +70,9 @@ public class LoginController {
 
         if (mbAuth.login(username, password)) {
             System.out.println("Usuaro logeado de forma exitosa: " + username);
-            JsfUtil.redirect("/faces/users/List.xhtml");
+            JsfUtil.redirect("/faces/files/List.xhtml");
         } else {
+            mbAuth.setFlashMessage("User or password don't match on database.");
             System.out.println("LOGIN FAIL!");
         }
     }

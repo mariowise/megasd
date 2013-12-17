@@ -19,48 +19,44 @@
                     <h:outputText value="#{filesController.pagination.pageFirstItem + 1}..#{filesController.pagination.pageLastItem + 1}/#{filesController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{filesController.previous}" value="#{bundle.Previous} #{filesController.pagination.pageSize}" rendered="#{filesController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{filesController.next}" value="#{bundle.Next} #{filesController.pagination.pageSize}" rendered="#{filesController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{filesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFilesTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFilesTitle_path}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.path}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFilesTitle_filename}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.filename}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFilesTitle_serverno}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.serverno}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFilesTitle_userId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.userId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{filesController.prepareView}" value="#{bundle.ListFilesViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{filesController.prepareEdit}" value="#{bundle.ListFilesEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{filesController.destroy}" value="#{bundle.ListFilesDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                    <div class="box">
+                        <h:dataTable value="#{filesController.items}" var="item" class="table">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFilesTitle_path}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.path}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFilesTitle_filename}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.filename}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFilesTitle_serverno}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.serverno}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFilesTitle_userId}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{filesController.prepareView}" value="#{bundle.ListFilesViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{filesController.prepareEdit}" value="#{bundle.ListFilesEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{filesController.destroy}" value="#{bundle.ListFilesDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{filesController.prepareCreate}" value="#{bundle.ListFilesCreateLink}"/>
