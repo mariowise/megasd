@@ -30,6 +30,7 @@
             </div>
             <form class="hidden" method="post" action="/webservice/webresources/webservice.files/upload" enctype="multipart/form-data">
                 <input id="upload-input" type="file" name="file" />
+                <h:inputText id="userId" value="#{mbAuth.userId}" />
                 <input id="upload-submit" type="submit" value="Upload" name="Upload"></input>
             </form>
             <script type="text/javascript">
