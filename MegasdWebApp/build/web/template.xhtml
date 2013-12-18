@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-xs-6" style="text-align: right; padding-top: 30px;">
                             <ui:fragment rendered="#{mbAuth.hasIdentity()}">
-                                <a class="btn btn-default"><i class="fa-file-o"></i> Upload file</a>
+                                <a class="btn btn-default" href="#{request.contextPath}/faces/files/Upload.xhtml"><i class="fa-file-o"></i> Upload file</a>
                                 <a class="btn btn-danger" href="#{request.contextPath}/faces/logout.xhtml"><i class="fa-sign-out"></i>Logout</a>
                             </ui:fragment>
                             <ui:fragment rendered="#{!mbAuth.hasIdentity()}">
