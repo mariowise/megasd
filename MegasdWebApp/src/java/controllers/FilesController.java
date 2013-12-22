@@ -1,16 +1,27 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.sun.jersey.api.client.GenericType;
 import entities.Files;
 import controllers.util.JsfUtil;
 import controllers.util.PaginationHelper;
+import entities.Servers;
+import java.io.InputStream;
 import sessionbeans.FilesFacadeLocal;
+import sessionbeans.ServersFacadeLocal;
 
 import java.io.Serializable;
+import java.io.StringReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -19,7 +30,12 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import managedbeans.MBAuth;
+import webservice.client.webserviceClient;
+
 
 @Named("filesController")
 @RequestScoped
@@ -29,6 +45,8 @@ public class FilesController implements Serializable {
     private DataModel items = null;
     @EJB
     private FilesFacadeLocal ejbFacade;
+    @EJB
+    private ServersFacadeLocal serverFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     @Inject
@@ -60,8 +78,19 @@ public class FilesController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
+                    List<Servers> servers = serverFacade.findAll();
+                    webserviceClient ws = new webserviceClient();
+                    List<Files> list = null;
+                    try {
+                        list = Arrays.asList(ws.findByUserId_XML(Files[].class, Integer.toString(mbAuth.getUserId())));
+                        System.out.println("He encontrado una lista desde el WS con " + list.size() + " elementos.");
+                    } catch (Exception ex) {
+                        System.out.println("* Error: Problemas al realizar la petición al WebService");
+                        System.out.println(ex.getMessage());
+                    }
+                    return new ListDataModel(list);
                     // return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
-                    return new ListDataModel(getFacade().findByUserId(mbAuth.getUserId()));
+                    // return new ListDataModel(getFacade().findByUserId(mbAuth.getUserId()));
                 }
             };
         }

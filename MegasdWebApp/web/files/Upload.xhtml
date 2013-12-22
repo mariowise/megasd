@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <form class="hidden" method="post" action="/webservice/webresources/webservice.files/upload" enctype="multipart/form-data">
+            <form id="upload-form" class="hidden" method="post" action="/webservice/webresources/webservice.files/upload" enctype="multipart/form-data">
                 <input id="upload-input" type="file" name="file" />
                 <h:inputText id="userId" value="#{mbAuth.userId}" />
                 <input id="upload-submit" type="submit" value="Upload" name="Upload"></input>
@@ -38,7 +38,7 @@
                 $('.upload i').click(function () {
                     if(!ilock) 
                         return;
-                    ilock = false;
+                    // ilock = false;
                     
                     $('#upload-input').click();
                     $('#upload-input').change(function (evnt) {
