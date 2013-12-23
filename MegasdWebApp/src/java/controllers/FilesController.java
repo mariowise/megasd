@@ -79,18 +79,39 @@ public class FilesController implements Serializable {
                 @Override
                 public DataModel createPageDataModel() {
                     List<Servers> servers = serverFacade.findAll();
-                    webserviceClient ws = new webserviceClient();
+                    
+                    List<Files> tList = new LinkedList();
+                    int cant = servers.size();
+                    String serverId, serverAdd, aux;
                     List<Files> list = null;
-                    try {
-                        list = Arrays.asList(ws.findByUserId_XML(Files[].class, Integer.toString(mbAuth.getUserId())));
-                        System.out.println("He encontrado una lista desde el WS con " + list.size() + " elementos.");
-                    } catch (Exception ex) {
-                        System.out.println("* Error: Problemas al realizar la petición al WebService");
-                        System.out.println(ex.getMessage());
+                    for(int i = 0; i < cant; i++) {
+                        try{
+                            serverId = Integer.toString(servers.get(i).getId());
+                            serverAdd = servers.get(i).getAddress();
+
+                            System.out.println("Buscando en el servidor#" + serverId + " cuya address es " + serverAdd);
+
+                            webserviceClient ws = new webserviceClient(serverAdd);
+                            list = null;
+
+                            list = Arrays.asList(ws.findByUserId_XML(Files[].class, Integer.toString(mbAuth.getUserId())));
+                            System.out.println("He encontrado una lista desde el WS con " + list.size() + " elementos.");
+
+                            for(int j = 0; j < list.size(); j++) {
+                                aux = list.get(j).getFilename();
+                                list.get(j).setFilename(aux.split("\\$\\$")[1]);
+                                list.get(j).setPath(ws.getBaseUri());
+                            }
+                            
+                            tList.addAll(list);
+
+                        } catch (Exception ex) {
+                                
+                            System.out.println("* Error: Problemas al realizar la petición al WebService");
+                            System.out.println(ex.getMessage());
+                        }
                     }
-                    return new ListDataModel(list);
-                    // return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
-                    // return new ListDataModel(getFacade().findByUserId(mbAuth.getUserId()));
+                    return new ListDataModel(tList);
                 }
             };
         }

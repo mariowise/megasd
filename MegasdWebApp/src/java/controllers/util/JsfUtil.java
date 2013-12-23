@@ -10,7 +10,9 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
+import javax.inject.Named;
 
+@Named("jsfUtil")
 public class JsfUtil {
 
     public static SelectItem[] getSelectItems(List<?> entities, boolean selectOne) {
@@ -70,5 +72,5 @@ public class JsfUtil {
             System.out.println("* Error: Problemas para redireccionar.");
         }
     }
-
+    
 }

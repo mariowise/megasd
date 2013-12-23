@@ -118,4 +118,8 @@ public class webserviceClient {
         client.destroy();
     }
 
+    public String getBaseUri() {
+        return BASE_URI;
+    }
+    
 }
